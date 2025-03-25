@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Kitchen Cabinet</title>
+    
+    <link rel="stylesheet" href="">
+    <script></script>
+  </head>
+  <body>
+    <main>
+      
+    <h1>General Inventory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Category ID</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-table-body"></tbody>
+    </table>
+
+    <script src="renderer.js"></script>
+    </main>
+  </body>
+</html>
