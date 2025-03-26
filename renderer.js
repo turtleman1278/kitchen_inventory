@@ -1,10 +1,11 @@
 async function loadInventory() {
   try {
-    const inventory = await window.electronAPI.fetchData(); // Call IPC function
+    // Call IPC function
+    const inventory = await window.electronAPI.fetchData();
     console.log("Inventory:", inventory);
 
     let tableBody = document.getElementById("inventory-table-body");
-    tableBody.innerHTML = ""; // Clear previous data
+    tableBody.innerHTML = "";
 
     inventory.forEach((item) => {
       let row = tableBody.insertRow();

@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
-const { executeQuery } = require("./database"); // Import DB functions
+// Import database from database.js
+const { executeQuery } = require("./database"); 
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -8,7 +9,8 @@ function createWindow() {
     width: 1000,
     height: 1000,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"), // Preload script
+      // Preload script
+      preload: path.join(__dirname, "preload.js"), 
       contextIsolation: true,
       enableRemoteModule: false,
     },
