@@ -8,3 +8,9 @@ window.addEventListener("DOMContentLoaded", () => {
     replaceText(`${type}-version`, process.versions[type]);
   }
 });
+
+const { contextBridge, ipcRenderer } = require("electron");
+
+contextBridge.exposeInMainWorld("electronAPI", {
+  fetchData: () => ipcRenderer.invoke("fetch-data"),
+});

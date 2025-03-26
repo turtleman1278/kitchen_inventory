@@ -1,8 +1,6 @@
-import { ipcRenderer } from "electron";
-
 async function loadInventory() {
   try {
-    const inventory = await ipcRenderer.invoke("fetch-inventory");
+    const inventory = await window.electronAPI.fetchData(); // Call IPC function
     console.log("Inventory:", inventory);
 
     let tableBody = document.getElementById("inventory-table-body");

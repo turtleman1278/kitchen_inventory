@@ -1,14 +1,16 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron/main");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
+const { executeQuery } = require("./database"); // Import DB functions
 
 function createWindow() {
-
   const mainWindow = new BrowserWindow({
     title: "Kitchen Cabinet",
     width: 1000,
     height: 1000,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.js"), // Preload script
+      contextIsolation: true,
+      enableRemoteModule: false,
     },
   });
 
@@ -31,11 +33,13 @@ app.on("window-all-closed", () => {
   }
 });
 
+// IPC Handler for Fetching Data
 ipcMain.handle("fetch-data", async () => {
-  return new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM general_inventory", (err, results) => {
-      if (err) reject(err);
-      resolve(results);
-    });
-  });
+  try {
+    const results = await executeQuery("SELECT * FROM general_inventory");
+    return results;
+  } catch (error) {
+    console.error("Database Error:", error);
+    return { error: "Database query failed" };
+  }
 });

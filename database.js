@@ -1,20 +1,33 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
-// Create a connection to the database
+// Create MySQL Connection
 const connection = mysql.createConnection({
-  host: "localhost", // Change to your database host
-  user: "root", // Your MySQL username
-  password: "zyxqir-Bytgud-2jybwe", // Your MySQL password
-  database: "kitchen_cabinet", // Your database name
+  host: "localhost",
+  user: "root",
+  password: "zyxqir-Bytgud-2jybwe",
+  database: "kitchen_cabinet",
 });
 
-// Connect to the database
+// Connect to Database
 connection.connect((err) => {
   if (err) {
-    console.error("Database connection failed: " + err.stack);
+    console.error("Database connection failed:", err.stack);
     return;
   }
-  console.log("Connected to MySQL as ID " + connection.threadId);
+  console.log("Connected to MySQL:", connection.threadId);
 });
 
-module.exports = connection;
+// Execute SQL Queries
+function executeQuery(query, params = []) {
+  return new Promise((resolve, reject) => {
+    connection.query(query, params, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+}
+
+module.exports = { executeQuery };
