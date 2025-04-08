@@ -32,35 +32,29 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'" />
-  <title>Kitchen Cabinet</title>
-</head>
-<body>
-  <main>
-    <h1 id="table-title">General Inventory</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kitchen Cabinet</title>
+  </head>
+  <body>
+    <h1 id="table-title">Select a Table</h1>
 
     <div>
       <button id="general-btn">General Inventory</button>
       <button id="pantry-btn">Pantry Inventory</button>
       <button id="shopping-btn">Shopping List</button>
+      <button id="category-btn">Category</button>
+      <button id="drinks-btn">Drinks</button>
+      <button id="appliance-btn">Kitchen Appliance</button>
+      <button id="nonperishable-btn">Non-Perishable</button>
+      <button id="perishables-btn">Perishables</button>
     </div>
 
     <table border="1">
-      <thead>
-        <tr>
-          <th>Item ID</th>
-          <th>Item Name</th>
-          <th>Quantity</th>
-          <th>Location</th>
-          <th>Category ID</th>
-        </tr>
-      </thead>
+      <thead id="table-headers"></thead>
       <tbody id="inventory-table-body"></tbody>
     </table>
-  </main>
 
-  <script src="renderer.js"></script>
-</body>
+    <script src="renderer.js"></script>
+  </body>
 </html>

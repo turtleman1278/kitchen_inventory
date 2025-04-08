@@ -19,7 +19,6 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
-
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
@@ -33,7 +32,6 @@ app.on("window-all-closed", () => {
   }
 });
 
-// IPC handler for dynamic table query
 ipcMain.handle("fetch-data", async (event, tableName) => {
   try {
     const results = await executeQuery(`SELECT * FROM ${tableName}`);
