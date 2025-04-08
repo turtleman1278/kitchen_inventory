@@ -12,5 +12,5 @@ window.addEventListener("DOMContentLoaded", () => {
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  fetchData: () => ipcRenderer.invoke("fetch-data"),
+  fetchData: (tableName) => ipcRenderer.invoke("fetch-data", tableName),
 });

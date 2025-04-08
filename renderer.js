@@ -1,23 +1,37 @@
-async function loadInventory() {
+async function loadTable(tableName) {
   try {
-    // Call IPC function
-    const inventory = await window.electronAPI.fetchData();
-    console.log("Inventory:", inventory);
+    const inventory = await window.electronAPI.fetchData(tableName);
+    console.log(`Loaded ${tableName}:`, inventory);
 
-    let tableBody = document.getElementById("inventory-table-body");
+    // Format and set title
+    document.getElementById("table-title").innerText = tableName
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const tableBody = document.getElementById("inventory-table-body");
     tableBody.innerHTML = "";
 
     inventory.forEach((item) => {
-      let row = tableBody.insertRow();
-      row.insertCell(0).innerText = item.item_id;
-      row.insertCell(1).innerText = item.item_name;
-      row.insertCell(2).innerText = item.item_quantity;
-      row.insertCell(3).innerText = item.item_location;
-      row.insertCell(4).innerText = item.category_id;
+      const row = tableBody.insertRow();
+      Object.values(item).forEach((val) => {
+        row.insertCell().innerText = val;
+      });
     });
   } catch (error) {
-    console.error("Error fetching inventory:", error);
+    console.error("Error loading table:", error);
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadInventory);
+document
+  .getElementById("general-btn")
+  .addEventListener("click", () => loadTable("general_inventory"));
+document
+  .getElementById("pantry-btn")
+  .addEventListener("click", () => loadTable("pantry_inventory"));
+document
+  .getElementById("shopping-btn")
+  .addEventListener("click", () => loadTable("shopping_list"));
+
+document.addEventListener("DOMContentLoaded", () =>
+  loadTable("general_inventory")
+);

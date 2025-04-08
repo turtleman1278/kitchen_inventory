@@ -1,6 +1,5 @@
 const mysql = require("mysql2");
 
-// Create MySQL Connection
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -8,7 +7,6 @@ const connection = mysql.createConnection({
   database: "kitchen_cabinet",
 });
 
-// Connect to Database
 connection.connect((err) => {
   if (err) {
     console.error("Database connection failed:", err.stack);
@@ -17,7 +15,6 @@ connection.connect((err) => {
   console.log("Connected to MySQL:", connection.threadId);
 });
 
-// Execute SQL Queries
 function executeQuery(query, params = []) {
   return new Promise((resolve, reject) => {
     connection.query(query, params, (err, results) => {

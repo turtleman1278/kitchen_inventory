@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("node:path");
-// Import database from database.js
-const { executeQuery } = require("./database"); 
+const { executeQuery } = require("./database");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -9,8 +8,7 @@ function createWindow() {
     width: 1000,
     height: 1000,
     webPreferences: {
-      // Preload script
-      preload: path.join(__dirname, "preload.js"), 
+      preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
       enableRemoteModule: false,
     },
@@ -35,10 +33,10 @@ app.on("window-all-closed", () => {
   }
 });
 
-// IPC Handler for Fetching Data
-ipcMain.handle("fetch-data", async () => {
+// IPC handler for dynamic table query
+ipcMain.handle("fetch-data", async (event, tableName) => {
   try {
-    const results = await executeQuery("SELECT * FROM general_inventory");
+    const results = await executeQuery(`SELECT * FROM ${tableName}`);
     return results;
   } catch (error) {
     console.error("Database Error:", error);
