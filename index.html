@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -25,6 +25,44 @@
         <tbody id="inventory-table-body"></tbody>
       </table>
     </main>
+    <script src="renderer.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'"
+    />
+    <title>Kitchen Cabinet</title>
+  </head>
+  <body>
+    <main>
+      <h1 id="table-title">General Inventory</h1>
+
+      <div>
+        <button id="general-btn">General Inventory</button>
+        <button id="pantry-btn">Pantry Inventory</button>
+        <button id="shopping-btn">Shopping List</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Location</th>
+            <th>Category ID</th>
+          </tr>
+        </thead>
+        <tbody id="inventory-table-body"></tbody>
+      </table>
+    </main>
+
     <script src="renderer.js"></script>
   </body>
 </html>
