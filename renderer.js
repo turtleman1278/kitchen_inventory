@@ -35,6 +35,15 @@ async function loadTable(tableName) {
   }
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const defaultTable = urlParams.get("table");
+  if (defaultTable) {
+    loadTable(defaultTable);
+  }
+});
+
+
 document
   .getElementById("general-btn")
   .addEventListener("click", () => loadTable("general_inventory"));

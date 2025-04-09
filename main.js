@@ -14,7 +14,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("main.html");
 }
 
 app.whenReady().then(() => {
