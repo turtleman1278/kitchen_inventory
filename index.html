@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Kitchen Cabinet</title>
-  </head>
-  <body>
-    <h1 id="table-title">Main Menu</h1>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Cabinet - Main Menu</title>
+</head>
+<body>
+    <h1>Kitchen Cabinet</h1>
     <div>
-      <button id="general-btn">General Inventory</button>
-      <button id="category-btn">Category</button>
-      <button id="drinks-btn">Drinks</button>
-      <button id="appliance-btn">Kitchen Appliance</button>
-      <button id="nonperishable-btn">Non-Perishable</button>
-      <button id="perishables-btn">Perishables</button>
+        <button onclick="location.href='general_inventory.html?table=general_inventory'">General Inventory</button>
+        <button onclick="location.href='category.html?table=category'">Category</button>
+        <button onclick="location.href='drinks.html?table=drinks'">Drinks</button>
+        <button onclick="location.href='kitchen_appliance.html?table=kitchen_appliance'">Kitchen Appliance</button>
+        <button onclick="location.href='non_perishable.html?table=non_perishable'">Non-Perishable</button>
+        <button onclick="location.href='perishables.html?table=perishables'">Perishables</button>
     </div>
 
-    <table border="1">
-      <thead id="table-headers"></thead>
-      <tbody id="inventory-table-body"></tbody>
-    </table>
-
-    <script src="renderer.js"></script>
-  </body>
+    <script>
+        // Add event listeners to each button
+        document.getElementById("general-btn").addEventListener("click", () => {
+            window.location.href = "general_inventory.html";
+        });
+        document.getElementById("category-btn").addEventListener("click", () => {
+            window.location.href = "category.html";
+        });
+        document.getElementById("drinks-btn").addEventListener("click", () => {
+            window.location.href = "drinks.html";
+        });
+        document.getElementById("appliance-btn").addEventListener("click", () => {
+            window.location.href = "kitchen_appliance.html";
+        });
+        document.getElementById("nonperishable-btn").addEventListener("click", () => {
+            window.location.href = "non_perishable.html";
+        });
+        document.getElementById("perishables-btn").addEventListener("click", () => {
+            window.location.href = "perishables.html";
+        });
+    </script>
+</body>
 </html>
