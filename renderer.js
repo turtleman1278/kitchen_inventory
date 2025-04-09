@@ -39,12 +39,6 @@ document
   .getElementById("general-btn")
   .addEventListener("click", () => loadTable("general_inventory"));
 document
-  .getElementById("pantry-btn")
-  .addEventListener("click", () => loadTable("pantry_inventory"));
-document
-  .getElementById("shopping-btn")
-  .addEventListener("click", () => loadTable("shopping_list"));
-document
   .getElementById("category-btn")
   .addEventListener("click", () => loadTable("category"));
 document
