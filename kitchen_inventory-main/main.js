@@ -20,8 +20,8 @@ connection.connect((err) => {
 function createWindow() {
   const mainWindow = new BrowserWindow({
     title: "Kitchen Cabinet",
-    width: 1000,
-    height: 1000,
+    width: 1500,
+    height: 1500,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
