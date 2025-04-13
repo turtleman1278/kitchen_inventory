@@ -7,6 +7,16 @@
   <body>
     <h1 id="table-title">General Inventory</h1>
 
+    <h2>Add Item</h2>
+    <input id="name" placeholder="Name" />
+    <input id="quantity" placeholder="Quantity" type="number" />
+    <input id="category" placeholder="Category ID" type="number" />
+    <button onclick="addItem()">Add Item</button>
+
+    <h2>Remove Item</h2>
+    <input id="delete-id" placeholder="Item ID to Delete" type="number" />
+    <button onclick="removeItem()">Remove Item</button>
+
     <table border="1">
       <thead id="table-headers"></thead>
       <tbody id="inventory-table-body"></tbody>

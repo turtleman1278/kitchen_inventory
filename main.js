@@ -60,3 +60,29 @@ ipcMain.handle("fetch-data", async (event, tableName) => {
     return { error: "Database query failed" }; // Return an error message if something goes wrong
   }
 });
+
+ipcMain.handle("add-item", async (event, item) => {
+  try {
+    const query = `INSERT INTO general_inventory (item_name, item_quantity, category_id) VALUES (?, ?, ?)`;
+    await connection
+      .promise()
+      .query(query, [item.name, item.quantity, item.categoryId]);
+    return true;
+  } catch (error) {
+    console.error("Add item error:", error);
+    return false;
+  }
+});
+
+ipcMain.handle("remove-item", async (event, id) => {
+  try {
+    const query = `DELETE FROM general_inventory WHERE item_id = ?`;
+    await connection.promise().query(query, [id]);
+    return true;
+  } catch (error) {
+    console.error("Remove item error:", error);
+    return false;
+  }
+});
+
+

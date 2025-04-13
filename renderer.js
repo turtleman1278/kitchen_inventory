@@ -54,3 +54,41 @@ window.addEventListener("DOMContentLoaded", () => {
   console.log("Loading table:", tableName); // Log the table name
   loadTable(tableName);
 });
+
+
+async function addItem() {
+  const name = document.getElementById("name").value;
+  const quantity = parseInt(document.getElementById("quantity").value);
+  const categoryId = parseInt(document.getElementById("category").value);
+
+  if (!name || isNaN(quantity) || isNaN(categoryId)) {
+    alert("Please enter valid item details.");
+    return;
+  }
+
+  const success = await window.electronAPI.addItem({
+    name,
+    quantity,
+    categoryId,
+  });
+  if (success) {
+    loadTable("general_inventory");
+  } else {
+    alert("Failed to add item.");
+  }
+}
+
+async function removeItem() {
+  const id = parseInt(document.getElementById("delete-id").value);
+  if (isNaN(id)) {
+    alert("Enter a valid ID.");
+    return;
+  }
+
+  const success = await window.electronAPI.removeItem(id);
+  if (success) {
+    loadTable("general_inventory");
+  } else {
+    alert("Failed to delete item.");
+  }
+}
