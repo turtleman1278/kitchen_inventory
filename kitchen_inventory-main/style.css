@@ -1,13 +1,24 @@
 /* style.css - Fruit-Themed Main Menu */
 
-body {
+/* body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff8e1; /* light fruit background */
-  color: #4e342e; /* dark text for contrast */
+  /*color: #4e342e; /* dark text for contrast */
+/*  text-align: center;
+/*  padding: 3rem 1rem;
+/*  margin: 0;
+} */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('white-bg.png');
+  background-size: cover; /* image covers the whole screen */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #4e342e;
   text-align: center;
   padding: 3rem 1rem;
   margin: 0;
-}
 
 h1 {
   color: #e65100; /* deep orange */
@@ -26,7 +37,7 @@ div {
 button {
   padding: 1rem;
   font-size: 1.1rem;
-  background-color: #ffcc80; /* soft orange */
+  background-color: transparent;
   border: none;
   border-radius: 8px;
   color: #4e342e;
@@ -35,7 +46,7 @@ button {
 }
 
 button:hover {
-  background-color: #ffa726; /* deeper orange */
+  background-color: #f3f3ff; /* light purple */
   transform: scale(1.03);
   cursor: pointer;
 }
